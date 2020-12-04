@@ -16,7 +16,7 @@ module.exports.createEvent = function(req, res) {
           "url": req.body.url,
           "date_time": req.body.date_time,
           "location": req.body.location,
-          "email": email
+          "email": email,
           "approved": "no"
         };
 
@@ -33,7 +33,7 @@ module.exports.createEvent = function(req, res) {
   });
 }
 
-module.exports.getEventsApproved - function(req, res) {
+module.exports.getEventsApproved = function(req, res) {
   connection.query('SELECT * FROM events WHERE approved = "yes"', function (error, results, fields) {
     if (error) {
       res.status(400);

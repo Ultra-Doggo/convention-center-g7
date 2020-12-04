@@ -7,7 +7,7 @@ const router = express.Router();
 const authenticateController = require('./controllers/authenticate');
 const registerController = require('./controllers/register');
 const eventController = require('./controllers/event');
-const personController = require('./controllers/peron');
+const personController = require('./controllers/person');
 const commentsController = require('./controllers/comments');
 const locationController = require('./controllers/location');
 
