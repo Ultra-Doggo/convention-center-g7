@@ -1,11 +1,14 @@
 import ls from 'local-storage';
 import {User} from "./User";
 import React from "react";
+import {addEvent} from "./Validator";
 
 export class LocalStorage {
     constructor() {
         if (ls('curUser') === null)
             ls('curUser', undefined);
+        if (ls('eventList') === null)
+            ls('eventList', []);
         if (ls('signed') === null)
             ls('signed', false);
     }
@@ -24,8 +27,19 @@ export class LocalStorage {
         return ls('curUser');
     }
 
+    addEvent(state) {
+        let eventList = ls('eventList');
+        let added = addEvent(state, this.getUser().email);
+        if (added[0]) {
+            eventList.push(added[1]);
+            ls('eventList', eventList);
+        }
+        return added;
+    }
+
     clear() {
         ls('curUser', undefined);
+        ls('eventList', []);
         ls('signed', false);
     }
 

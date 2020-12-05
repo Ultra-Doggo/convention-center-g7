@@ -17,6 +17,14 @@ function callRegister(state) {
   return xhr.status;
 }
 
+function callCreateEvent(state, admin_email) {
+  let xhr = new XMLHttpRequest();
+  xhr.open("POST", `${config.baseUrl}/create-event`, false);
+  xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhr.send("name="+state.name+"&email="+admin_email+"&description="+state.description+"&url="+state.url+"&date_time="+state.date);
+  return [xhr.status, xhr.responseText];
+}
+
 export function authenticate(state, storage) {
     if (state.user !== "" && state.pass !== "") {
         let authCode = callAuthenticate(state);
@@ -67,4 +75,14 @@ export function register(state, storage) {
     } else {
         return [false, 'Please fill in all fields']
     }
+}
+
+export function addEvent(state, curUser) {
+  let eventCode = callCreateEvent(state, curUser);
+  if (eventCode === 200) { // event added successfully
+    let newEvent = new Event(state.name, curUser, state.description, state.url, state.date, state.address);
+    return [true, newEvent];
+  } else {
+      return [false, 'Error has occurred'];
+  }
 }

@@ -7,28 +7,34 @@ module.exports.createEvent = function(req, res) {
       res.status(400);
       res.send();
     } else {
-        let admin_id = results[0].user_id;
+        if(results.length > 0) {
+          let admin_id = results[0].user_id;
 
-        let events = {
-          "admin_id": admin_id,
-          "name": req.body.event_name,
-          "description": req.body.description,
-          "url": req.body.url,
-          "date_time": req.body.date_time,
-          "location": req.body.location,
-          "email": email,
-          "approved": "no"
-        };
+          let events = {
+            "admin_id": admin_id,
+            "name": req.body.name,
+            "location": "none",
+            "description": req.body.description,
+            "url": req.body.url,
+            "date_time": req.body.date_time,
+            "email": req.body.email,
+            "approved": "no"
+          };
 
-        connection.query('INSERT INTO events SET ?', events, function (error, fields) {
-          if (error) {
-            res.status(400);
-            res.send();
-          } else {
-              res.status(200);
-              res.send();
-          }
-        });
+          connection.query('INSERT INTO events SET ?', events, function (error, fields) {
+            if (error) {
+              res.status(300);
+              res.send(error);
+            } else {
+                res.status(200);
+                res.send();
+            }
+          });
+        }
+        else {
+          res.status(205); // current user doesnt exist
+          res.send();
+        }
     }
   });
 }

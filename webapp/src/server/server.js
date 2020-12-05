@@ -41,7 +41,7 @@ router.post('/api/get-comments', commentsController.getComments);
 router.post('/api/add-location', locationController.addLocation);
 router.post('/api/get-location', locationController.getLocations);
 
-const PORT = 5000;
+const PORT = 5001;
 
 // server environment
 app.listen(PORT, () => {
