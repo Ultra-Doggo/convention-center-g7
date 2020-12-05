@@ -1,7 +1,6 @@
 import React from 'react';
 import '../../webapp.css';
 import {withRouter} from "react-router-dom"
-import {register} from "../../services/Validator";
 
 class Dashboard extends React.Component {
 
