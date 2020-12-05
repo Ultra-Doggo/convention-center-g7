@@ -41,7 +41,7 @@ class EventCreation extends React.Component {
 		event.preventDefault();
 		let created = this.props.storage.addEvent(this.state);
 		if (created[0]) {
-			alert("success");
+			this.props.history.push('/dashboard');
 		} else {
 			this.setState({error: 'EventError'});
 			this.setState({errorMessage: created[1]});
