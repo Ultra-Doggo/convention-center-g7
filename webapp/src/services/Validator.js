@@ -38,6 +38,7 @@ function GetAllEventsAuth() {
   let xhr = new XMLHttpRequest();
   xhr.open("POST", `${config.baseUrl}/get-all-events`, false);
   xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhr.send();
   console.log(xhr.responseText);
   return [xhr.status, xhr.responseText];
 }
@@ -97,7 +98,7 @@ export function register(state, storage) {
 export function addEvent(state, curUser) {
   let eventCode = callCreateEvent(state, curUser);
   if (eventCode === 200) { // event added successfully
-    let newEvent = new Event(state.name, curUser, state.description, state.url, state.date, state.address);
+    let newEvent = new Event('0', state.name, curUser, state.description, state.url, state.date, state.address);
     return [true, newEvent];
   } else {
       return [false, 'Error has occurred'];
@@ -111,7 +112,7 @@ export function SearchForAdmin(state) {
     let events = [];
     for (var i = 0; i < data.results.length; i++)
     {
-      events.push(new Event(data.results[i].name, data.results[i].email, data.results[i].description, 
+      events.push(new Event(data.results[i].event_id, data.results[i].name, data.results[i].email, data.results[i].description,
         data.results[i].url, data.results[i].date_time, data.results[i].address));
     }
     return [true, events];
@@ -128,7 +129,7 @@ export function SearchAllEvents() {
     let events = [];
     for (var i = 0; i < data.results.length; i++)
     {
-      events.push(new Event(data.results[i].name, data.results[i].email, data.results[i].description, 
+      events.push(new Event(data.results[i].event_id, data.results[i].name, data.results[i].email, data.results[i].description,
         data.results[i].url, data.results[i].date_time, data.results[i].address));
     }
     return [true, events];

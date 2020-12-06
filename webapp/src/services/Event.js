@@ -1,5 +1,6 @@
 export class Event {
-    constructor(name, admin, description, url, date, address) {
+    constructor(key, name, admin, description, url, date, address) {
+        this.key = key;
         this.name = name;
         this.admin = admin;
         this.description = description;
