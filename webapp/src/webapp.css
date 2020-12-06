@@ -156,6 +156,29 @@ input {
 	overflow: hidden;
 }
 
+#events {
+	text-align: center;
+	border-collapse: collapse;
+	border: 3px solid #ddd;
+	width: 100%;
+}
+
+#events td, #events th {
+	border: 1px solid #ddd;
+	padding: 8px;
+}
+  
+#events tr:nth-child(even){background-color: #f2f2f2;}
+#events tr:hover {background-color: #ddd;}
+  
+#events th {
+	padding-top: 12px;
+	padding-bottom: 12px;
+	text-align: center;
+	background-color: #FF4B2B;
+	color: white;
+}
+
 footer {
     background-color: #222;
     color: #fff;

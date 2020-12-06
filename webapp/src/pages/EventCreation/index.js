@@ -15,7 +15,7 @@ class EventCreation extends React.Component {
 		this.changeDate = this.changeDate.bind(this);
     	this.changeAddress = this.changeAddress.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
-		
+
 		this.handleBackToDashboard = this.handleBackToDashboard.bind(this);
 	}
 
@@ -77,7 +77,7 @@ class EventCreation extends React.Component {
                     {this.state.errorMessage}
           </div>
         </form>
-		<button onClick={this.handleBackToDashboard}> Back to Dashboard </button>
+		<button id="back-to-dash" onClick={this.handleBackToDashboard}> Back to Dashboard </button>
       </div>
 		);
 	}
