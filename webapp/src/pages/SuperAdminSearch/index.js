@@ -2,7 +2,7 @@ import React from 'react';
 import '../../webapp.css';
 import {withRouter} from "react-router-dom"
 
-// this is the page where a superAdmin will search up a user by their email 
+// this is the page where a superAdmin will search up a user by their email
 // The super admin will then select either the events they listed or the events they signed up for
 class SuperAdminSearch extends React.Component {
 
@@ -30,29 +30,36 @@ class SuperAdminSearch extends React.Component {
   // need a "search for user" feature to look up and check for valid users who have made or signed up for events
   handleAdminEvents(event) {
     event.preventDefault();
-    let check = this.props.storage.SearchForAdmin(this.state);
-    console.log("super admin check = " + check);
-    if (check[0]) {
-      this.props.history.push("/ListEventsAdmin");
-       alert("success");
+		if (this.state.email !== '') {
+	    let check = this.props.storage.SearchForAdmin(this.state);
+	    console.log("super admin check = " + check);
+	    if (check[0]) {
+	      this.props.history.push("/ListEventsAdmin");
+			} else {
+				this.setState({error: 'EventError'});
+				this.setState({errorMessage: check[1]});
+			}
 		} else {
-			this.setState({error: 'EventError'});
-			this.setState({errorMessage: check[1]});
+				alert("Please input an email");
 		}
   }
 
   handleUserEvents(event) {
     event.preventDefault();
-    let check = this.props.storage.SearchForUser(this.state);
-    if (check[0]) {
-      //this.props.history.push("/ListEventsUser");
-      alert("success");
+		if (this.state.email !== '') {
+	    let check = this.props.storage.SearchForUser(this.state);
+	    if (check[0]) {
+	      //this.props.history.push("/ListEventsUser");
+	      alert("success");
+			} else {
+				this.setState({error: 'EventError'});
+	      this.setState({errorMessage: check[1]});
+	    }
 		} else {
-			this.setState({error: 'EventError'});
-      this.setState({errorMessage: check[1]});
-    }
+				alert("Please input an email");
+		}
   }
-  
+
 	render() {
 		return (
       <div className="container" id="container">
