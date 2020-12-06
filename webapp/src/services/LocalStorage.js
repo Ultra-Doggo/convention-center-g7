@@ -11,6 +11,8 @@ export class LocalStorage {
             ls('eventList', []);
         if (ls('signed') === null)
             ls('signed', false);
+        if (ls('userType') === null)
+            ls('userType', undefined);
     }
 
     setUser(newUser) {
@@ -31,6 +33,7 @@ export class LocalStorage {
         let eventList = ls('eventList');
         let added = addEvent(state, this.getUser().email);
         if (added[0]) {
+            console.log(added[1]);
             eventList.push(added[1]);
             ls('eventList', eventList);
         }

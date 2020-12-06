@@ -12,7 +12,9 @@ export default function RouteWrapper({
     if (isPrivate && !storage.isSigned()) {
         return <Redirect to="/" />;
     }
-
+    if (storage.getUser().level === "superadmin") {
+        return <Redirect to="/superadminsearch" />;
+    }
     return <Route {...rest} />;
 }
 

@@ -38,9 +38,9 @@ export function authenticate(state, storage) {
         }
         let data = JSON.parse(authCode[1]);
         if (authCode[0] === 200) {
-          let newUser = new User(state.user, data.results);
+          let newUser = new User(state.user, data.results.name, data.results.level);
           storage.setUser(newUser);
-          return [true];
+          return [true, data.results.level];
         }
     } else {
         return [false, 'Please fill in all fields'];
