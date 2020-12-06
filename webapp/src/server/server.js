@@ -27,6 +27,7 @@ router.post('/api/register', registerController.register);
 router.post('/api/login', authenticateController.authenticate);
 // event
 router.post('/api/create-event', eventController.createEvent);
+router.post('/api/get-all-events', eventController.getAllEvents);
 router.post('/api/get-events-approved', eventController.getEventsApproved);
 router.post('/api/get-events-admin', eventController.getEventsByAdmin);
 router.post('/api/get-events-person', eventController.getEventsByPerson);
