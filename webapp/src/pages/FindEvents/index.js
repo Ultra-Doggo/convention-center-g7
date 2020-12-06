@@ -17,11 +17,12 @@ class FindEvents extends React.Component {
 		}
 
 		for (var i = 0; i < listEvents.length; i++) {
+			let date = new Date(listEvents[i].date);
 			this.state.events.push({
 				name: listEvents[i].name,
 				description: listEvents[i].description,
 				location: listEvents[i].location,
-				date_time: listEvents[i].date,
+				date_time: date.toLocaleString("en-US", {timeZone: "EST"}),
 				url: listEvents[i].url,
 				key: listEvents[i].key
 			})
