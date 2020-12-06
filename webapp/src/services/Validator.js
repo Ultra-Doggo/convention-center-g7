@@ -34,6 +34,14 @@ function CallSearchForAdmin(state) {
   return [xhr.status, xhr.responseText];
 }
 
+function GetAllEventsAuth() {
+  let xhr = new XMLHttpRequest();
+  xhr.open("POST", `${config.baseUrl}/get-all-events`, false);
+  xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  console.log(xhr.responseText);
+  return [xhr.status, xhr.responseText];
+}
+
 export function authenticate(state, storage) {
     if (state.user !== "" && state.pass !== "") {
         let authCode = callAuthenticate(state);
@@ -112,3 +120,19 @@ export function SearchForAdmin(state) {
   }
 }
 
+export function SearchAllEvents() {
+  let eventCode = GetAllEventsAuth();
+  console.log(eventCode);
+  if (eventCode[0] === 200) { // event added successfully
+    let data = JSON.parse(eventCode[1]);
+    let events = [];
+    for (var i = 0; i < data.results.length; i++)
+    {
+      events.push(new Event(data.results[i].name, data.results[i].email, data.results[i].description, 
+        data.results[i].url, data.results[i].date_time, data.results[i].address));
+    }
+    return [true, events];
+  } else {
+      return [false, 'Error has occurred'];
+  }
+}
