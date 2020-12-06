@@ -58,6 +58,10 @@ button {
   cursor: pointer;
 }
 
+button:hover{
+	background-color: #df2100;
+} 
+
 button:active {
 	transform: scale(0.95);
 }
