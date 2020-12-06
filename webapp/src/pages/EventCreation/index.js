@@ -13,8 +13,10 @@ class EventCreation extends React.Component {
 		this.changeDescription = this.changeDescription.bind(this);
 		this.changeUrl = this.changeUrl.bind(this);
 		this.changeDate = this.changeDate.bind(this);
-    this.changeAddress = this.changeAddress.bind(this);
+		this.changeAddress = this.changeAddress.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
+		
+		this.handleBackToDashboard = this.handleBackToDashboard.bind(this);
 	}
 
   changeName(event) {
@@ -49,6 +51,12 @@ class EventCreation extends React.Component {
 		}
 	}
 
+	handleBackToDashboard(event) {
+		event.preventDefault();
+        // this.props.storage.clear();
+        this.props.history.push("/dashboard");
+	}
+
 	render() {
 		return (
       <div className="container" id="container">
@@ -69,6 +77,7 @@ class EventCreation extends React.Component {
                     {this.state.errorMessage}
           </div>
         </form>
+		<button onClick={this.handleBackToDashboard}> Back to Dashboard </button>
       </div>
 		);
 	}
