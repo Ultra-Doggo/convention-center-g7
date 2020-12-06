@@ -39,7 +39,12 @@ export class Login extends React.Component {
         event.preventDefault();
         let validated = authenticate(this.state, this.props.storage);
         if (validated[0]) {
-    			this.props.history.push('/dashboard');
+          if (validated[1] === "superadmin") {
+            this.props.history.push('/superadminsearch')
+          }
+          else {
+    			   this.props.history.push('/dashboard');
+          }
     		} else {
             this.setState({error: 'loginError'});
             this.setState({errorMessage: validated[1]});
