@@ -39,6 +39,20 @@ module.exports.createEvent = function(req, res) {
   });
 }
 
+module.exports.getAllEvents = function(req, res) {
+  connection.query('SELECT * FROM events', function (error, results, fields) {
+    if (error) {
+      res.status(400);
+      res.send();
+    } else {
+       res.status(200);
+       res.send({
+         results: results
+       })
+    }
+  });
+}
+
 module.exports.getEventsApproved = function(req, res) {
   connection.query('SELECT * FROM events WHERE approved = "yes"', function (error, results, fields) {
     if (error) {
