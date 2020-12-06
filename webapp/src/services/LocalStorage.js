@@ -1,7 +1,7 @@
 import ls from 'local-storage';
 import {User} from "./User";
 import React from "react";
-import {addEvent} from "./Validator";
+import {addEvent, SearchForAdmin} from "./Validator";
 
 export class LocalStorage {
     constructor() {
@@ -41,6 +41,30 @@ export class LocalStorage {
         ls('curUser', undefined);
         ls('eventList', []);
         ls('signed', false);
+    }
+
+    SearchForAdmin(state) {
+        let eventList = ls('eventList');
+        let added = SearchForAdmin(state);  
+        if (added[0]) {
+            console.log("added = " + added[1][0])
+  
+            for (var i = 0; i < added[1].length; i++)
+            {
+                eventList.push(added[1][i]);
+            }
+
+            ls('eventList', eventList);
+        }
+        return added;
+    }
+
+    GetAdminEventList() {
+        return ls('eventList');
+    }
+
+    ClearAdminEventList() {
+        ls('eventList', []);
     }
 
     isSigned() {
