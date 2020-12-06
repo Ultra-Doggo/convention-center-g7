@@ -13,7 +13,7 @@ class EventCreation extends React.Component {
 		this.changeDescription = this.changeDescription.bind(this);
 		this.changeUrl = this.changeUrl.bind(this);
 		this.changeDate = this.changeDate.bind(this);
-		this.changeAddress = this.changeAddress.bind(this);
+    	this.changeAddress = this.changeAddress.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
 		
 		this.handleBackToDashboard = this.handleBackToDashboard.bind(this);

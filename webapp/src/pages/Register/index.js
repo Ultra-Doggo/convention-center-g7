@@ -14,7 +14,7 @@ class RegisterBox extends React.Component {
 		this.changeUser = this.changeUser.bind(this);
 		this.changePass = this.changePass.bind(this);
 		this.changeRepass = this.changeRepass.bind(this);
-    this.handleLogin = this.handleLogin.bind(this);
+    	this.handleLogin = this.handleLogin.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
