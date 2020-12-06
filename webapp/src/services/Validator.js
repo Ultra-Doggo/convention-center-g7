@@ -23,7 +23,7 @@ function callCreateEvent(state, admin_email) {
   xhr.open("POST", `${config.baseUrl}/create-event`, false);
   xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xhr.send("name="+state.name+"&email="+admin_email+"&description="+state.description+"&url="+state.url+"&date_time="+state.date);
-  return [xhr.status, xhr.responseText];
+  return xhr.status;
 }
 
 function CallSearchForAdmin(state) {
