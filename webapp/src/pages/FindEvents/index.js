@@ -2,6 +2,7 @@ import React from 'react';
 import '../../webapp.css';
 import { withRouter } from "react-router-dom"
 import {registerToEvent} from "../../services/Validator";
+import Navbar from '../../components/Navbar';
 
 class FindEvents extends React.Component {
 
@@ -122,8 +123,8 @@ class FindEvents extends React.Component {
 
 			<div className="container-wrapper">
 				<div className="container" id="all-events">
+					<Navbar />
 					<h1>Find Events </h1>
-					<button id="back-to-dash" onClick={this.handleBackToDashboard}> Back to Dashboard </button>
 					<div className="table">
 						<div >
 							{this.renderTableData()}
