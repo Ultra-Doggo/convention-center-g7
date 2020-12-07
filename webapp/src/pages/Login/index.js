@@ -16,6 +16,7 @@ export class Login extends React.Component {
         super(props);
         this.state = {user:'', pass:'', error:'loginError'};
 
+        this.props.storage.clear();
         this.changeUser = this.changeUser.bind(this);
         this.changePass = this.changePass.bind(this);
         this.handleRegister = this.handleRegister.bind(this);

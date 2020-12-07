@@ -24,7 +24,7 @@ export const SidebarData = [
   {
     title: 'Logout',
     path: '/',
-    icon: <IoIcons.IoMdLogOut onCLick={localStorage.clear()}/>,
+    icon: <IoIcons.IoMdLogOut />,
     cName: 'nav-text'
   }
 ];
