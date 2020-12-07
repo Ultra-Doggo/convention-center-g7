@@ -62,7 +62,7 @@ class FindEvents extends React.Component {
 		return (
       		<div className="new-container">
 						<div className="table">
-						<h1>Find Events</h1>
+						<h1>Find Events </h1> <button id="back-to-dash" onClick={this.handleBackToDashboard}> Back to Dashboard </button>
 							<table id='events'>
 				        <tbody>
 									<tr>{this.renderTableHeader()}</tr>
@@ -70,7 +70,6 @@ class FindEvents extends React.Component {
 			         	</tbody>
 			        </table>
 							</div>
-				<button id="back-to-dash" onClick={this.handleBackToDashboard}> Back to Dashboard </button>
       		</div>
 		);
 	}
