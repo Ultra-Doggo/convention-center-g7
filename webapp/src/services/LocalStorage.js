@@ -1,7 +1,7 @@
 import ls from 'local-storage';
 import {User} from "./User";
 import React from "react";
-import {addEvent, SearchForAdmin, SearchAllEvents} from "./Validator";
+import {addEvent, SearchForAdmin, SearchAllEvents, SearchHostEvents} from "./Validator";
 
 
 export class LocalStorage {

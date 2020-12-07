@@ -30,6 +30,7 @@ class FindEvents extends React.Component {
 				admin: listEvents[i].admin
 			})
 		}
+		console.log(this.state.events);
 	}
 
 	handleBackToDashboard(event) {
