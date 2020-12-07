@@ -59,26 +59,28 @@ class EventCreation extends React.Component {
 
 	render() {
 		return (
-      <div className="container" id="container">
-        <h1>Event Creation</h1>
-        <form onSubmit={this.handleSubmit}>
-          <input type='text' required placeholder='Event Name'
-                 value ={this.state.name} onChange={this.changeName}/>
-          <input type='text' required placeholder='Description'
-                 value={this.state.description} onChange={this.changeDescription}/>
-          <input type='text' required placeholder='Event URL'
-                 value ={this.state.url} onChange={this.changeUrl}/>
-          <input type='datetime-local' required placeholder='Date'
-                 value ={this.state.date} onChange={this.changeDate}/>
-          <input type='text' required placeholder='Address'
-                 value ={this.state.address} onChange={this.changeAddress}/>
-          <button>Create Event</button>
-		  <br></br>
-		  <button id="back-to-dash" onClick={this.handleBackToDashboard}> Cancel </button>
-          <div className='error' id={this.state.error}>
-                    {this.state.errorMessage}
-          </div>
-        </form>
+      <div className="container-wrapper">
+        <div className="container" id="container">
+          <h1>Event Creation</h1>
+          <form onSubmit={this.handleSubmit}>
+            <input type='text' required placeholder='Event Name'
+                   value ={this.state.name} onChange={this.changeName}/>
+            <input type='text' required placeholder='Description'
+                   value={this.state.description} onChange={this.changeDescription}/>
+            <input type='text' required placeholder='Event URL'
+                   value ={this.state.url} onChange={this.changeUrl}/>
+            <input type='datetime-local' required placeholder='Date'
+                   value ={this.state.date} onChange={this.changeDate}/>
+            <input type='text' required placeholder='Address'
+                   value ={this.state.address} onChange={this.changeAddress}/>
+            <button>Create Event</button>
+  		  <br></br>
+  		  <button id="back-to-dash" onClick={this.handleBackToDashboard}> Cancel </button>
+            <div className='error' id={this.state.error}>
+                      {this.state.errorMessage}
+            </div>
+          </form>
+        </div>
       </div>
 		);
 	}
