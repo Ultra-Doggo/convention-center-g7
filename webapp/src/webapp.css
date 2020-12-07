@@ -59,6 +59,7 @@ button, button[id="back-to-dash"] {
   cursor: pointer;
 }
 
+
 button:hover{
 	background-color: #df2100;
 } 

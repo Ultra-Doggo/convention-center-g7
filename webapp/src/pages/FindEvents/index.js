@@ -35,6 +35,7 @@ class FindEvents extends React.Component {
 		this.props.history.push("/dashboard");
 	}
 
+
 	handlePopUpInfo(i) {
 		console.log(i);
 		let name = "new-container";
@@ -51,6 +52,7 @@ class FindEvents extends React.Component {
 		
 	}
 
+	
 	renderTableData() {
 
 		const divStyle = {
