@@ -73,11 +73,12 @@ class EventCreation extends React.Component {
           <input type='text' required placeholder='Address'
                  value ={this.state.address} onChange={this.changeAddress}/>
           <button>Create Event</button>
+		  <br></br>
+		  <button id="back-to-dash" onClick={this.handleBackToDashboard}> Cancel </button>
           <div className='error' id={this.state.error}>
                     {this.state.errorMessage}
           </div>
         </form>
-		<button id="back-to-dash" onClick={this.handleBackToDashboard}> Back to Dashboard </button>
       </div>
 		);
 	}
