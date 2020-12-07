@@ -1,5 +1,6 @@
 import React from 'react';
 import '../../webapp.css';
+import Navbar from '../../components/Navbar';
 import {Link, withRouter} from "react-router-dom"
 
 class Dashboard extends React.Component {
@@ -31,12 +32,10 @@ class Dashboard extends React.Component {
 	render() {
 		return (
       <div className="container" id="container">
+        <Navbar />
         <h1> Welcome, {this.props.storage.getUser().name}!</h1>
-        <button onClick={this.handleEventCreation}> Create Event </button>
-        <button onClick={this.handleFindEvents}> Find an Event </button>
         <h3>Registered Events:</h3>
         <h3>My Events:</h3>
-        <button onClick={this.handleLogout}> Logout </button>
       </div>
       
 		);
