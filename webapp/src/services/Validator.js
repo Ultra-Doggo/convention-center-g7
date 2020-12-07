@@ -26,6 +26,14 @@ function callCreateEvent(state, admin_email) {
   return xhr.status;
 }
 
+function callRegisterEvent(event_id, curUser) {
+  let xhr = new XMLHttpRequest();
+  xhr.open("POST", `${config.baseUrl}/add-person`, false);
+  xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhr.send("event_id="+event_id+"&email="+curUser);
+  return xhr.status;
+}
+
 function CallSearchForAdmin(state) {
   let xhr = new XMLHttpRequest();
   xhr.open("POST", `${config.baseUrl}/get-events-admin`, false);
@@ -81,7 +89,7 @@ export function register(state, storage) {
         } else if (authCode[0] === 205) {
             let registerCode = callRegister(state);
             if (registerCode === 200) {
-              let newUser = new User(state.user, state.name);
+              let newUser = new User(state.user, state.name, "person");
               storage.setUser(newUser);
               return [true];
             } else {
@@ -102,6 +110,19 @@ export function addEvent(state, curUser) {
     return [true, newEvent];
   } else {
       return [false, 'Error has occurred'];
+  }
+}
+
+export function registerToEvent(event_id, curUser) {
+  let registerCode = callRegisterEvent(event_id, curUser);
+  if (registerCode === 200) {
+    return [true];
+  } else if (registerCode === 305) {
+      return [false, "User is already added to this event"];
+  } else if (registerCode === 306) {
+      return [false, "Admin cannot be added to own event"];
+  } else {
+      return [false, "Error has occured"];
   }
 }
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import '../../webapp.css';
 import { withRouter } from "react-router-dom"
+import {registerToEvent} from "../../services/Validator";
 
 class FindEvents extends React.Component {
 
@@ -24,7 +25,8 @@ class FindEvents extends React.Component {
 				location: listEvents[i].location,
 				date_time: date.toLocaleString("en-US", { timeZone: "EST" }),
 				url: listEvents[i].url,
-				key: listEvents[i].key
+				key: listEvents[i].key,
+				admin: listEvents[i].admin
 			})
 		}
 	}
@@ -52,6 +54,14 @@ class FindEvents extends React.Component {
 
 	}
 
+	handleRegister(name, key) {
+		let registered = registerToEvent(key, this.props.storage.getUser().email);
+		if (registered[0]) {
+			alert(`Successfully registered to event ${name}`);
+		} else {
+				alert(registered[1]);
+		}
+	}
 
 	renderTableData() {
 
@@ -69,10 +79,8 @@ class FindEvents extends React.Component {
 
 		}
 
-
-
 		return this.state.events.map((eventInfo, index) => {
-			const { key, name, description, location, date_time, url, email } = eventInfo //destructuring
+			const { key, name, description, location, date_time, url, admin } = eventInfo //destructuring
 			return (
 
 				<div>
@@ -84,7 +92,7 @@ class FindEvents extends React.Component {
 							<p>{date_time}</p>
 							<p>{location}</p>
 							<p>{url}</p>
-
+							<button onClick={(e) => this.handleRegister(name, key)}> Register to this event</button>
 						</div>
 					</div>
 					<div class='eventsBox' id={name} key={index} onClick={(e) => this.handlePopUpInfo(name+index)}>
@@ -115,12 +123,12 @@ class FindEvents extends React.Component {
 			<div className="container-wrapper">
 				<div className="container" id="all-events">
 					<h1>Find Events </h1>
+					<button id="back-to-dash" onClick={this.handleBackToDashboard}> Back to Dashboard </button>
 					<div className="table">
 						<div >
 							{this.renderTableData()}
 						</div>
 					</div>
-					<button id="back-to-dash" onClick={this.handleBackToDashboard}> Back to Dashboard </button>
 				</div>
 			</div>
 		);
