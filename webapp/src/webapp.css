@@ -17,6 +17,7 @@ h1 {
 	font-weight: bold;
 	margin: 0;
 	padding: 1vh;
+	text-align: center;
 }
 
 h2 {
@@ -25,6 +26,11 @@ h2 {
 
 h3 {
 	padding: 1vh;
+	font-size: 3vh;
+	font-weight: 100;
+	text-align: center;
+	margin-bottom: 0%;
+	text-decoration: underline;
 }
 
 p {
@@ -229,6 +235,14 @@ input {
 	width: 50%;
 	height: 100%;
 	overflow: hidden;
+}
+
+#host-events-table {
+	padding-top: 140vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
 }
 
 #events {
