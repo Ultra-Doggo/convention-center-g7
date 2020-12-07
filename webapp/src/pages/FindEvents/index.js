@@ -1,6 +1,5 @@
 import React from 'react';
 import '../../webapp.css';
-import Navbar from '../../components/Navbar';
 import {withRouter} from "react-router-dom"
 
 class FindEvents extends React.Component {
@@ -62,7 +61,6 @@ class FindEvents extends React.Component {
 	render() {
 		return (
       		<div className="new-container">
-				  <Navbar />
 						<div className="table">
 						<h1>Find Events </h1> 
 							<table id='events'>
