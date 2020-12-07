@@ -52,6 +52,7 @@ class RegisterBox extends React.Component {
 
 	render() {
 		return (
+	<div className="container-wrapper">
       <div className="container" id="container">
         <div className="form-container-right">
           <form onSubmit={this.handleSubmit}>
@@ -76,6 +77,7 @@ class RegisterBox extends React.Component {
           <button onClick={this.handleLogin} className="ghost" id="signIn">Sign In</button>
         </div>
       </div>
+	</div>
 		);
 	}
 }
