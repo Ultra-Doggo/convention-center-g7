@@ -20,10 +20,15 @@ body {
 h1 {
 	font-weight: bold;
 	margin: 0;
+	padding: 1vh;
 }
 
 h2 {
 	text-align: center;
+}
+
+h3 {
+	padding: 1vh;
 }
 
 p {
