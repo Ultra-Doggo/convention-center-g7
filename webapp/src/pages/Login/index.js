@@ -53,25 +53,27 @@ export class Login extends React.Component {
 
     render () {
         return (
-            <div className="container" id="container">
-              <div className="form-container">
-                <form onSubmit={this.handleSubmit}>
-                  <h1>Sign in</h1>
-                  <input type='text' required placeholder='Email'
-                        value={this.state.user} onChange={ this.changeUser} />
-                  <input type='password'required placeholder='Password'
-                        value ={this.state.pass} onChange={this.changePass} />
-                  <a href="#">Forgot your password?</a>
-                  <button>Sign In</button>
-                  <div className='error' id={this.state.error}>
-                            {this.state.errorMessage}
-                  </div>
-                </form>
-              </div>
-              <div className="overlay-container-right">
-                <h1>Hi There!</h1>
-                <p>Don't have an account with us yet? Register now!</p>
-                <button onClick={this.handleRegister} className="ghost" id="signUp">Sign Up </button>
+            <div className="container-wrapper">
+              <div className="container" id="container">
+                <div className="form-container">
+                  <form onSubmit={this.handleSubmit}>
+                    <h1>Sign in</h1>
+                    <input type='text' required placeholder='Email'
+                          value={this.state.user} onChange={ this.changeUser} />
+                    <input type='password'required placeholder='Password'
+                          value ={this.state.pass} onChange={this.changePass} />
+                    <a href="#">Forgot your password?</a>
+                    <button>Sign In</button>
+                    <div className='error' id={this.state.error}>
+                              {this.state.errorMessage}
+                    </div>
+                  </form>
+                </div>
+                <div className="overlay-container-right">
+                  <h1>Hi There!</h1>
+                  <p>Don't have an account with us yet? Register now!</p>
+                  <button onClick={this.handleRegister} className="ghost" id="signUp">Sign Up </button>
+                </div>
               </div>
             </div>
         );

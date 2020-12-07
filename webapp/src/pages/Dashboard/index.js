@@ -31,13 +31,12 @@ class Dashboard extends React.Component {
 
 	render() {
 		return (
-      <div className="container" id="container">
-        <Navbar />
-        <h1> Welcome, {this.props.storage.getUser().name}!</h1>
-        <h3>Registered Events:</h3>
-        <h3>My Events:</h3>
-      </div>
-      
+				<div className="new-container">
+	        <Navbar />
+	        <h1> Welcome, {this.props.storage.getUser().name}!</h1>
+	        <h3>Registered Events:</h3>
+	        <h3>My Events:</h3>
+	      </div>
 		);
 	}
 }
