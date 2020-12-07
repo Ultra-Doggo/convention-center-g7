@@ -41,7 +41,7 @@ class FindEvents extends React.Component {
 		let name = "new-container";
 		document.getElementById(i).style.display="flex";
 		document.getElementById("all-events").style.overflow="hidden";
-		
+
 	}
 
 	closePopUpInfo(i) {
@@ -49,10 +49,10 @@ class FindEvents extends React.Component {
 		document.getElementById(i).style.display="none";
 		let name = "new-container";
 		document.getElementById("all-events").style.overflow="scroll";
-		
+
 	}
 
-	
+
 	renderTableData() {
 
 		const divStyle = {
@@ -92,7 +92,7 @@ class FindEvents extends React.Component {
 						<div style={dStyle}>Filler Location{location}</div>
 						<div style={dStyle}>{date_time}</div>
 					</div >
-					
+
 				</div>
 			)
 		})
@@ -112,25 +112,17 @@ class FindEvents extends React.Component {
 
 		return (
 
-			<body>
-				<div className="new-container" id="all-events">
+			<div className="container-wrapper">
+				<div className="container" id="all-events">
+					<h1>Find Events </h1>
 					<div className="table">
-						<h1>Find Events </h1>
 						<div >
-
-							<button id="back-to-dash" onClick={this.handleBackToDashboard}> Back to Dashboard </button>
-
 							{this.renderTableData()}
-
-
-
-
-
 						</div>
 					</div>
-
+					<button id="back-to-dash" onClick={this.handleBackToDashboard}> Back to Dashboard </button>
 				</div>
-			</body>
+			</div>
 		);
 	}
 }

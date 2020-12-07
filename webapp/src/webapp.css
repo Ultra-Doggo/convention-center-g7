@@ -147,13 +147,11 @@ input {
 	left: 0;
 	width: 100%;
 	height: 100vh;
-	overflow: visible;
 	position: absolute;
-	margin-top: 15px;
 	top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
 }
 
 #all-events {
@@ -161,11 +159,10 @@ input {
 	border-radius: 10px;
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 	position: relative;
-	
 	max-width: 100%;
 	width: 1000px;
 	height: 90%;
-	overflow: scroll;
+	overflow: hidden;
 }
 
 #all-events {
@@ -173,7 +170,7 @@ input {
 }
 
 .table {
-	height:95%;
+	height:85%;
 	overflow:auto;
 }
 
@@ -253,8 +250,8 @@ input {
 .eventsBox  {
 	background-color: lightgrey;
 	width: 900px;
-	height: 50px; 
-	margin: 20px; 
+	height: 50px;
+	margin: 20px;
 	padding: 0px;
 	align-items: flex;
 	overflow: hidden;
@@ -270,7 +267,7 @@ input {
 	color: #333;
 	transform: rotate(45deg);
 	cursor: pointer;
-	
+
 }
 
 .close:hover {
@@ -283,7 +280,7 @@ input {
 .eventsBox:hover {background-color: rgb(245, 176, 176);}
 
 .pop-up {
-	
+
 	width: 100%;
 	height: 100%;
 	background-color: rgba(0, 0, 0, 0.8);
@@ -297,8 +294,8 @@ input {
 	align-items: center;
 
 	margin: auto;
-  
-  
+
+
   padding: 10px;
 }
 
