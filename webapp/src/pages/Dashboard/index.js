@@ -73,13 +73,17 @@ class Dashboard extends React.Component {
     this.props.history.push("/findevents");
   }
 
-	handleDelete(key) {
-		let deleted = deleteEvent(key);
-		if (deleted[0]) {
-			alert("Event was successfully deleted.");
-			window.location.reload();
+	handleDelete(key, name) {
+		if (window.confirm(`Are you sure you want to delete the event ${name}?`)) {
+			let deleted = deleteEvent(key);
+			if (deleted[0]) {
+				alert("Event was successfully deleted.");
+				window.location.reload();
+			} else {
+					alert(deleted[1]);
+			}
 		} else {
-				alert(deleted[1]);
+				alert("Deletion of event cancelled.");
 		}
 	}
 
@@ -108,7 +112,7 @@ class Dashboard extends React.Component {
 						<div style={dStyle}>{name}</div>
 						<div style={dStyle}>Filler Location{location}</div>
 						<div style={dStyle}>{date_time}</div>
-					  <div id="deleteButton" onClick={(e) => this.handleDelete(key)}>x</div>
+					  <div id="deleteButton" onClick={(e) => this.handleDelete(key, name)}>x</div>
 					</div >
 
 				</div>
