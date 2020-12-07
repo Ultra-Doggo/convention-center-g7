@@ -238,11 +238,12 @@ input {
 }
 
 #host-events-table {
-	padding-top: 140vh;
+	margin-top: -35vh;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
+	border-radius: 2vh;
 }
 
 #events {

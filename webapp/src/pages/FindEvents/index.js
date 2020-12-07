@@ -127,7 +127,7 @@ class FindEvents extends React.Component {
 					<Navbar />
 					<h1>Find Events </h1>
 					<div className="table">
-						<div >
+						<div>
 							{this.renderTableData()}
 						</div>
 					</div>

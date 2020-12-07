@@ -39,6 +39,22 @@ class Dashboard extends React.Component {
     }
     
     console.log(this.state.events);
+  }
+  
+  handlePopUpInfo(i) {
+		console.log(i);
+		let name = "new-container";
+		document.getElementById(i).style.display="flex";
+		document.getElementById("all-events").style.overflow="hidden";
+
+	}
+
+	closePopUpInfo(i) {
+		console.log(i);
+		document.getElementById(i).style.display="none";
+		let name = "new-container";
+		document.getElementById("all-events").style.overflow="scroll";
+
 	}
 
   handleLogout(event) {
@@ -78,18 +94,7 @@ class Dashboard extends React.Component {
 			return (
 
 				<div>
-					<div class="pop-up" id={name+index} >
-						<div class="pop-up-content" >
-						<div class="close" onClick={(e) => this.closePopUpInfo(name+index)}>+</div>
-							<h1>{name}</h1>
-							<p>{description}</p>
-							<p>{date_time}</p>
-							<p>{location}</p>
-							<p>{url}</p>
-							<button onClick={(e) => this.handleRegister(name, key)}> Register to this event</button>
-						</div>
-					</div>
-					<div class='eventsBox' id={name} key={index} onClick={(e) => this.handlePopUpInfo(name+index)}>
+					<div class='eventsBox' id={name} key={index}>
 						<div style={dStyle}>{name}</div>
 						<div style={dStyle}>Filler Location{location}</div>
 						<div style={dStyle}>{date_time}</div>
@@ -109,7 +114,6 @@ class Dashboard extends React.Component {
 	        <h3>My Events:</h3>
           <div className="table" id="host-events-table">
 						<div>
-              <h1>test</h1>
 							{this.renderTableData()}
 						</div>
 					</div>
