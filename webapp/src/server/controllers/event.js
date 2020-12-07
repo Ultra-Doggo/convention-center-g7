@@ -83,19 +83,32 @@ module.exports.getEventsByAdmin = function(req, res) {
 }
 
 module.exports.getEventsByPerson = function(req, res) {
-  connection.query('SELECT event_id FROM person WHERE user_id = ?', [req.body.user_id], function (error, results, fields) {
+  connection.query('SELECT user_id FROM users WHERE email = ?', [req.body.email], function (error, results, fields) {
     if (error) {
       res.status(400);
       res.send();
     } else {
-       let event_id = results[0].event_id;
-
-       connection.query('SELECT * FROM events WHERE event_id = ?', [event_id], function (error, results, fields) {
-         res.status(400);
-         res.send({
-           results: results
-         });
-       });
+        if (results.length > 0) {
+          let user_id = results[0].user_id;
+          connection.query('SELECT event_id FROM person WHERE user_id = ?', [user_id], function (error, results, fields) {
+            if (error) {
+              res.status(400);
+              res.send();
+            } else {
+               let event_id = results[0].event_id;
+               connection.query('SELECT * FROM events WHERE event_id = ?', [event_id], function (error, results, fields) {
+                 if (error) {
+                   res.status(400);
+                   res.send();
+                 } else {
+                   res.send({
+                     results: results
+                   });
+                 }
+               });
+            }
+          });
+        }
     }
   });
 }

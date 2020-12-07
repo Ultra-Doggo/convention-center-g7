@@ -1,7 +1,7 @@
 import ls from 'local-storage';
 import {User} from "./User";
 import React from "react";
-import {addEvent, SearchForAdmin, SearchAllEvents, SearchHostEvents} from "./Validator";
+import {addEvent, SearchForAdmin, SearchAllEvents, SearchHostEvents, SearchForUser} from "./Validator";
 
 
 export class LocalStorage {
@@ -47,12 +47,24 @@ export class LocalStorage {
         ls('signed', false);
     }
 
+    SearchForUser(state) {
+        let eventList = ls('eventList');
+        let added = SearchForUser(state);
+        if (added[0]) {
+            for (var i = 0; i < added[1].length; i++)
+            {
+                eventList.push(added[1][i]);
+            }
+
+            ls('eventList', eventList);
+        }
+        return added;
+    }
+
     SearchForAdmin(state) {
         let eventList = ls('eventList');
-        let added = SearchForAdmin(state);  
+        let added = SearchForAdmin(state);
         if (added[0]) {
-            console.log("added = " + added[1][0])
-  
             for (var i = 0; i < added[1].length; i++)
             {
                 eventList.push(added[1][i]);
@@ -77,8 +89,8 @@ export class LocalStorage {
 
     SearchForEvents() {
         let eventList = ls('eventList');
-        let added = SearchAllEvents();  
-        if (added[0]) {  
+        let added = SearchAllEvents();
+        if (added[0]) {
             for (var i = 0; i < added[1].length; i++)
             {
                 eventList.push(added[1][i]);

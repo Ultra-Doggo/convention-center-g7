@@ -42,6 +42,14 @@ function callRegisterEvent(event_id, curUser) {
   return xhr.status;
 }
 
+function CallSearchForUser(state) {
+  let xhr = new XMLHttpRequest();
+  xhr.open("POST", `${config.baseUrl}/get-events-person`, false);
+  xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhr.send("email="+state.email);
+  return [xhr.status, xhr.responseText];
+}
+
 function CallSearchForAdmin(state) {
   let xhr = new XMLHttpRequest();
   xhr.open("POST", `${config.baseUrl}/get-events-admin`, false);
@@ -140,6 +148,22 @@ export function registerToEvent(event_id, curUser) {
       return [false, "Admin cannot be added to own event"];
   } else {
       return [false, "Error has occured"];
+  }
+}
+
+export function SearchForUser(state) {
+  let eventCode = CallSearchForUser(state);
+  if (eventCode[0] === 200) { // event added successfully
+    let data = JSON.parse(eventCode[1]);
+    let events = [];
+    for (var i = 0; i < data.results.length; i++)
+    {
+      events.push(new Event(data.results[i].event_id, data.results[i].name, data.results[i].email, data.results[i].description,
+        data.results[i].url, data.results[i].date_time, data.results[i].address));
+    }
+    return [true, events];
+  } else {
+      return [false, 'Error has occurred'];
   }
 }
 
