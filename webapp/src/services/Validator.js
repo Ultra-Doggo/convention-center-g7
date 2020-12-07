@@ -26,6 +26,14 @@ function callCreateEvent(state, admin_email) {
   return xhr.status;
 }
 
+function callDeleteEvent(event_id) {
+  let xhr = new XMLHttpRequest();
+  xhr.open("POST", `${config.baseUrl}/delete-event`, false);
+  xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhr.send("event_id="+event_id);
+  return xhr.status;
+}
+
 function callRegisterEvent(event_id, curUser) {
   let xhr = new XMLHttpRequest();
   xhr.open("POST", `${config.baseUrl}/add-person`, false);
@@ -110,6 +118,15 @@ export function addEvent(state, curUser) {
     return [true, newEvent];
   } else {
       return [false, 'Error has occurred'];
+  }
+}
+
+export function deleteEvent(event_id) {
+  let deleteCode = callDeleteEvent(event_id);
+  if (deleteCode === 200) {
+    return [true];
+  } else {
+      return [false, "Error has occured"];
   }
 }
 

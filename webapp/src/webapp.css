@@ -66,6 +66,16 @@ button, button[id="back-to-dash"] {
   cursor: pointer;
 }
 
+#deleteButton {
+	display: inline-block;
+	color: #FF4B2B;
+	vertical-align: middle;
+	margin-top: 13px;
+	padding-left: 10%;
+	font-weight: bold;
+	cursor: pointer;
+}
+
 button:hover{
 	background-color: #df2100;
 }
@@ -238,7 +248,6 @@ input {
 }
 
 #host-events-table {
-	margin-top: -35vh;
 	display: flex;
 	justify-content: center;
 	align-items: center;

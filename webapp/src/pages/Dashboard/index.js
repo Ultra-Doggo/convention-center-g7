@@ -2,7 +2,7 @@ import React from 'react';
 import '../../webapp.css';
 import Navbar from '../../components/Navbar';
 import {Link, withRouter} from "react-router-dom";
-import {registerToEvent} from "../../services/Validator";
+import {registerToEvent, deleteEvent} from "../../services/Validator";
 
 class Dashboard extends React.Component {
 
@@ -18,7 +18,7 @@ class Dashboard extends React.Component {
     this.props.storage.SearchForAdmin(this.props.storage.getUser());
     // this.props.storage.SearchForEvents();
 
-    
+
 		let listEvents = this.props.storage.GetAdminEventList();
 
 		this.state = {
@@ -37,10 +37,10 @@ class Dashboard extends React.Component {
 				admin: listEvents[i].admin
 			})
     }
-    
+
     console.log(this.state.events);
   }
-  
+
   handlePopUpInfo(i) {
 		console.log(i);
 		let name = "new-container";
@@ -58,20 +58,30 @@ class Dashboard extends React.Component {
 	}
 
   handleLogout(event) {
-        event.preventDefault();
-        this.props.storage.clear();
-        this.props.history.push("/");
+    event.preventDefault();
+    this.props.storage.clear();
+    this.props.history.push("/");
   }
 
   handleEventCreation(event) {
     event.preventDefault();
     this.props.history.push("/eventcreation");
-}
+	}
 
   handleFindEvents(event) {
     event.preventDefault();
     this.props.history.push("/findevents");
   }
+
+	handleDelete(key) {
+		let deleted = deleteEvent(key);
+		if (deleted[0]) {
+			alert("Event was successfully deleted.");
+			window.location.reload();
+		} else {
+				alert(deleted[1]);
+		}
+	}
 
   renderTableData() {
 
@@ -83,7 +93,7 @@ class Dashboard extends React.Component {
 
 		const dStyle = {
 			display: "inline-block", float: "left",
-			width: 299, height: 30, verticalAlign: "middle", marginTop: 13,
+			width: 260, height: 30, verticalAlign: "middle", marginTop: 13,
 			//border: "1px solid red",
 			textAlign: "center"
 
@@ -98,13 +108,14 @@ class Dashboard extends React.Component {
 						<div style={dStyle}>{name}</div>
 						<div style={dStyle}>Filler Location{location}</div>
 						<div style={dStyle}>{date_time}</div>
+					  <div id="deleteButton" onClick={(e) => this.handleDelete(key)}>x</div>
 					</div >
 
 				</div>
 			)
 		})
 	}
-  
+
 	render() {
 		return (
 				<div className="new-container">
