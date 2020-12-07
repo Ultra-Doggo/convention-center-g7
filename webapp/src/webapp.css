@@ -154,6 +154,13 @@ input {
   left: 0;
 }
 
+.container #back-to-dash {
+	margin: 0;
+	position: absolute;
+	left: 50%;
+	transform: translate(-50%, 150%);
+}
+
 #all-events {
 	background-color: #fff;
 	border-radius: 10px;
