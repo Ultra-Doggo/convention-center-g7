@@ -62,19 +62,21 @@ class SuperAdminSearch extends React.Component {
 
 	render() {
 		return (
-      <div className="container" id="container">
-        <h1> Welcome, Super Admin {this.props.storage.getUser().name}!</h1>
-        <div className="container" id="container">
-          <h2> Search User </h2>
-          <form>
-            <input type='text' required placeholder='User Email' value ={this.state.email} onChange={this.SearchName}/>
-          </form>
-          <button onClick={this.handleAdminEvents} style={{marginLeft: '12rem'}} > Admin Events </button>
-          <button onClick={this.handleUserEvents} style={{marginLeft: '1rem'}}> User Events </button>
-          <br></br><br></br>
-          <button onClick={this.handleLogout} style={{marginLeft: '20rem'}}> Logout </button>
-        </div>
-      </div>
+			<div className="container-wrapper">
+	      <div className="container" id="container">
+	        <h1> Welcome, Super Admin {this.props.storage.getUser().name}!</h1>
+	        <div className="container" id="container">
+	          <h2> Search User </h2>
+	          <form>
+	            <input type='text' required placeholder='User Email' value ={this.state.email} onChange={this.SearchName}/>
+	          </form>
+	          <button onClick={this.handleAdminEvents} style={{marginLeft: '12rem'}} > Admin Events </button>
+	          <button onClick={this.handleUserEvents} style={{marginLeft: '1rem'}}> User Events </button>
+	          <br></br><br></br>
+	          <button onClick={this.handleLogout} style={{marginLeft: '20rem'}}> Logout </button>
+	        </div>
+	      </div>
+			</div>
 		);
 	}
 }

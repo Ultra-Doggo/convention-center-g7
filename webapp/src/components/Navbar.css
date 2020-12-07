@@ -19,16 +19,16 @@
     display: flex;
     justify-content: center;
     position: absolute;
-    
+    height: 100vh;
     left: -100%;
     transition: 850ms;
   }
-  
+
   .nav-menu.active {
     left: 0;
     transition: 350ms;
   }
-  
+
   .nav-text {
     display: flex;
     justify-content: start;
