@@ -51,6 +51,8 @@ class Dashboard extends React.Component {
 				admin: listEvents[i].admin
 			})
     }
+		console.log(this.state.events);
+		console.log(this.state.registeredEvents);
   }
 
   handlePopUpInfo(i) {
@@ -142,10 +144,9 @@ class Dashboard extends React.Component {
 
 		const dStyle = {
 			display: "inline-block", float: "left",
-			width: 260, height: 30, verticalAlign: "middle", marginTop: 13,
+			width: 299, height: 30, verticalAlign: "middle", marginTop: 13,
 			//border: "1px solid red",
 			textAlign: "center"
-
 		}
 
 		return this.state.registeredEvents.map((eventInfo, index) => {
@@ -157,7 +158,6 @@ class Dashboard extends React.Component {
 						<div style={dStyle}>{name}</div>
 						<div style={dStyle}>Filler Location{location}</div>
 						<div style={dStyle}>{date_time}</div>
-					  <div id="deleteButton" onClick={(e) => this.handleDelete(key, name)}>x</div>
 					</div >
 
 				</div>

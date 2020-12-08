@@ -95,17 +95,27 @@ module.exports.getEventsByPerson = function(req, res) {
               res.status(400);
               res.send();
             } else {
-               let event_id = results[0].event_id;
-               connection.query('SELECT * FROM events WHERE event_id = ?', [event_id], function (error, results, fields) {
-                 if (error) {
-                   res.status(400);
-                   res.send();
-                 } else {
-                   res.send({
-                     results: results
-                   });
-                 }
-               });
+                var r = [];
+                for (let i = 0; i < results.length; i++) {
+                  event_id = results[i].event_id;
+                  connection.query('SELECT * FROM events WHERE event_id = ?', [event_id], function (error, results, fields) {
+                    if (error) {
+                      res.status(400);
+                      res.send();
+                    } else {
+                        r.push(results[0]);
+                    }
+                  });
+                }
+                connection.query('SELECT event_id FROM person WHERE user_id = ?', [user_id], function (error, results, fields) {
+                  if (error) {
+                    res.status(400);
+                    res.send();
+                  } else {
+                      res.status(200);
+                      res.send({results: r});
+                  }
+                });
             }
           });
         }

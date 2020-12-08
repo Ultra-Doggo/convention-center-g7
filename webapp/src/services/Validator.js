@@ -153,7 +153,7 @@ export function registerToEvent(event_id, curUser) {
 
 export function SearchForUser(state) {
   let eventCode = CallSearchForUser(state);
-  if (eventCode[0] === 200) { // event added successfully
+  if (eventCode[0] === 200) {
     let data = JSON.parse(eventCode[1]);
     let events = [];
     for (var i = 0; i < data.results.length; i++)
@@ -169,7 +169,7 @@ export function SearchForUser(state) {
 
 export function SearchForAdmin(state) {
   let eventCode = CallSearchForAdmin(state);
-  if (eventCode[0] === 200) { // event added successfully
+  if (eventCode[0] === 200) {
     let data = JSON.parse(eventCode[1]);
     let events = [];
     for (var i = 0; i < data.results.length; i++)
@@ -186,7 +186,7 @@ export function SearchForAdmin(state) {
 export function SearchAllEvents() {
   let eventCode = GetAllEventsAuth();
   console.log(eventCode);
-  if (eventCode[0] === 200) { // event added successfully
+  if (eventCode[0] === 200) {
     let data = JSON.parse(eventCode[1]);
     let events = [];
     for (var i = 0; i < data.results.length; i++)
