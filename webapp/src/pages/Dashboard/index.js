@@ -124,7 +124,7 @@ class Dashboard extends React.Component {
 				<div>
 					<div class='eventsBox' id={name} key={index}>
 						<div style={dStyle}>{name}</div>
-						<div style={dStyle}>Filler Location{location}</div>
+						<div style={dStyle}>{location}</div>
 						<div style={dStyle}>{date_time}</div>
 					  <div id="deleteButton" onClick={(e) => this.handleDelete(key, name)}>x</div>
 					</div >
@@ -156,7 +156,7 @@ class Dashboard extends React.Component {
 				<div>
 					<div class='eventsBox' id={name} key={index}>
 						<div style={dStyle}>{name}</div>
-						<div style={dStyle}>Filler Location{location}</div>
+						<div style={dStyle}>{location}</div>
 						<div style={dStyle}>{date_time}</div>
 					</div >
 

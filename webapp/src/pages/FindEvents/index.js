@@ -30,7 +30,7 @@ class FindEvents extends React.Component {
 				admin: listEvents[i].admin
 			})
 		}
-		console.log(this.state.events);
+		console.log(listEvents);
 	}
 
 	handleBackToDashboard(event) {
@@ -90,16 +90,16 @@ class FindEvents extends React.Component {
 						<div class="pop-up-content" >
 						<div class="close" onClick={(e) => this.closePopUpInfo(name+index)}>+</div>
 							<h1>{name}</h1>
-							<p>{description}</p>
-							<p>{date_time}</p>
-							<p>{location}</p>
-							<p>{url}</p>
+							<p>Description: {description}</p>
+							<p>Date: {date_time}</p>
+							<p>Location: {location}</p>
+							<p>URL: {url}</p>
 							<button onClick={(e) => this.handleRegister(name, key)}> Register to this event</button>
 						</div>
 					</div>
 					<div class='eventsBox' id={name} key={index} onClick={(e) => this.handlePopUpInfo(name+index)}>
 						<div style={dStyle}>{name}</div>
-						<div style={dStyle}>Filler Location{location}</div>
+						<div style={dStyle}>{location}</div>
 						<div style={dStyle}>{date_time}</div>
 					</div >
 

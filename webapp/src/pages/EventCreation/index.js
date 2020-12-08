@@ -7,13 +7,13 @@ class EventCreation extends React.Component {
   constructor(props) {
 		super(props);
 
-		this.state = {name: '', description:'', url:'', date:'', address:'', error:'registerError'};
+		this.state = {name: '', description:'', url:'', date:'', location:'', error:'registerError'};
 
 		this.changeName = this.changeName.bind(this);
 		this.changeDescription = this.changeDescription.bind(this);
 		this.changeUrl = this.changeUrl.bind(this);
 		this.changeDate = this.changeDate.bind(this);
-    	this.changeAddress = this.changeAddress.bind(this);
+    this.changeLocation = this.changeLocation.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
 
 		this.handleBackToDashboard = this.handleBackToDashboard.bind(this);
@@ -35,8 +35,8 @@ class EventCreation extends React.Component {
 			this.setState({date: event.target.value});
 	}
 
-  changeAddress(event) {
-			this.setState({address: event.target.value});
+  changeLocation(event) {
+			this.setState({location: event.target.value});
 	}
 
 	handleSubmit(event) {
@@ -71,8 +71,8 @@ class EventCreation extends React.Component {
                    value ={this.state.url} onChange={this.changeUrl}/>
             <input type='datetime-local' required placeholder='Date'
                    value ={this.state.date} onChange={this.changeDate}/>
-            <input type='text' required placeholder='Address'
-                   value ={this.state.address} onChange={this.changeAddress}/>
+            <input type='text' required placeholder='Location/Address'
+                   value ={this.state.location} onChange={this.changeLocation}/>
             <button>Create Event</button>
   		  <br></br>
   		  <button id="back-to-dash" onClick={this.handleBackToDashboard}> Cancel </button>
