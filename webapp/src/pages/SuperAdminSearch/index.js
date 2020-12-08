@@ -9,7 +9,7 @@ class SuperAdminSearch extends React.Component {
 	constructor(props) {
 		super(props);
 
-    this.state = {email: '', error:'registerError'};
+    this.state = {email: '', error:'eventError'};
     this.props.storage.ClearAdminEventList();
     this.handleLogout = this.handleLogout.bind(this);
     this.handleAdminEvents = this.handleAdminEvents.bind(this);
@@ -35,7 +35,7 @@ class SuperAdminSearch extends React.Component {
 	    if (check[0]) {
 	      this.props.history.push("/ListEventsAdmin");
 			} else {
-				this.setState({error: 'EventError'});
+				this.setState({error: 'eventError'});
 				this.setState({errorMessage: check[1]});
 			}
 		} else {
@@ -50,7 +50,7 @@ class SuperAdminSearch extends React.Component {
 	    if (check[0]) {
 	      this.props.history.push("/ListEventsUser");
 			} else {
-				this.setState({error: 'EventError'});
+				this.setState({error: 'eventError'});
 	      this.setState({errorMessage: check[1]});
 	    }
 		} else {
@@ -72,6 +72,9 @@ class SuperAdminSearch extends React.Component {
 	          <button onClick={this.handleUserEvents} style={{marginLeft: '1rem'}}> User Events </button>
 	          <br></br><br></br>
 	          <button onClick={this.handleLogout} style={{marginLeft: '20rem'}}> Logout </button>
+						<div className='error' id={this.state.error}>
+											{this.state.errorMessage}
+						</div>
 	        </div>
 	      </div>
 			</div>

@@ -180,6 +180,8 @@ export function SearchForUser(state) {
         data.results[i].url, data.results[i].date_time, data.results[i].location, data.results[i].approved));
     }
     return [true, events];
+  } else if (eventCode[0] === 205) {
+      return [false, 'User does not exist'];
   } else {
       return [false, 'Error has occurred'];
   }
@@ -196,6 +198,8 @@ export function SearchForAdmin(state) {
         data.results[i].url, data.results[i].date_time, data.results[i].location, data.results[i].approved));
     }
     return [true, events];
+  } else if (eventCode[0] === 205) {
+      return [false, 'Admin does not exist'];
   } else {
       return [false, 'Error has occurred'];
   }

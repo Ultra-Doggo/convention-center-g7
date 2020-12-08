@@ -74,10 +74,15 @@ module.exports.getEventsByAdmin = function(req, res) {
       res.status(400);
       res.send();
     } else {
-       res.status(200);
-       res.send({
-         results: results
-       });
+        if (results.length > 0) {
+         res.status(200);
+         res.send({
+           results: results
+         });
+       } else {
+          res.status(205);
+          res.send();
+       }
     }
   });
 }
@@ -118,6 +123,9 @@ module.exports.getEventsByPerson = function(req, res) {
                 });
             }
           });
+        } else {
+            res.status(205);
+            res.send();
         }
     }
   });
