@@ -170,7 +170,7 @@ input {
   left: 0;
 }
 
-.container #back-to-dash {
+#back-to-dash {
 	margin: 0;
 	position: absolute;
 	left: 50%;
