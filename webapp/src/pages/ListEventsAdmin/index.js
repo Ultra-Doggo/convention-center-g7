@@ -61,7 +61,7 @@ class ListEventsAdmin extends React.Component {
 		return (
       		<div className="new-container">
 						<div className="table">
-						<h1>Events By Admin</h1>
+						<h1>Events Created by Admin</h1>
 							<table id='events'>
 				        <tbody>
 									<tr>{this.renderTableHeader()}</tr>

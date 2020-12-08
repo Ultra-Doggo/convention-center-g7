@@ -32,7 +32,6 @@ class SuperAdminSearch extends React.Component {
     event.preventDefault();
 		if (this.state.email !== '') {
 	    let check = this.props.storage.SearchForAdmin(this.state);
-	    console.log("super admin check = " + check);
 	    if (check[0]) {
 	      this.props.history.push("/ListEventsAdmin");
 			} else {
@@ -49,8 +48,7 @@ class SuperAdminSearch extends React.Component {
 		if (this.state.email !== '') {
 	    let check = this.props.storage.SearchForUser(this.state);
 	    if (check[0]) {
-	      //this.props.history.push("/ListEventsUser");
-	      alert("success");
+	      this.props.history.push("/ListEventsUser");
 			} else {
 				this.setState({error: 'EventError'});
 	      this.setState({errorMessage: check[1]});
