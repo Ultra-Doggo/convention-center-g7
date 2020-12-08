@@ -13,23 +13,19 @@ class ListEventsUser extends React.Component {
 		this.state =  {
 			registeredEvents: []
         }
-        
-  
-        // we will have to search for the user based on email
-	    listEvents = this.props.storage.GetAdminEventList();
 
 		for (var i = 0; i < listEvents.length; i++) {
 			let date = new Date(listEvents[i].date);
 			this.state.registeredEvents.push({
 				name: listEvents[i].name,
+			  admin: listEvents[i].admin,
 				description: listEvents[i].description,
 				location: listEvents[i].location,
 				date_time: date.toLocaleString("en-US", { timeZone: "EST" }),
 				url: listEvents[i].url,
 				key: listEvents[i].key,
-				admin: listEvents[i].admin
-            })
-        }
+      })
+    }
 	}
 
 	handleBackToDashboard(event) {
