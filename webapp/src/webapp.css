@@ -71,10 +71,22 @@ button, button[id="back-to-dash"] {
 	color: #FF4B2B;
 	vertical-align: middle;
 	margin-top: 13px;
-	padding-left: 10%;
+	padding-left: 5%;
 	font-weight: bold;
 	cursor: pointer;
 }
+
+#approveButton {
+	display: inline-block;
+	color: #FF4B2B;
+	float: left;
+	vertical-align: middle;
+	margin-top: 13px;
+	margin-left: 2%;
+	font-weight: bold;
+	cursor: pointer;
+}
+
 
 button:hover{
 	background-color: #df2100;
@@ -330,7 +342,7 @@ input {
 }
 
 .pop-up-content {
-	height: 300px;
+	height: 380px;
 	width: 500px;
 	background-color: white;
 	text-align: center;

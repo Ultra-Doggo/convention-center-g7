@@ -111,6 +111,7 @@ class Dashboard extends React.Component {
 			let approved = approveEvent(key);
 			if (approved[0]) {
 				alert("Event was successfully approved.");
+				window.location.reload();
 			} else {
 					alert(approved[1]);
 			}

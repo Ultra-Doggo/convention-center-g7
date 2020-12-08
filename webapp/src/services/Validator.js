@@ -22,13 +22,21 @@ function callCreateEvent(state, admin_email) {
   let xhr = new XMLHttpRequest();
   xhr.open("POST", `${config.baseUrl}/create-event`, false);
   xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  xhr.send("name="+state.name+"&email="+admin_email+"&description="+state.description+"&url="+state.url+"&date_time="+state.date);
+  xhr.send("name="+state.name+"&email="+admin_email+"&description="+state.description+"&url="+state.url+"&date_time="+state.date+"&location="+state.location);
   return xhr.status;
 }
 
 function callDeleteEvent(event_id) {
   let xhr = new XMLHttpRequest();
   xhr.open("POST", `${config.baseUrl}/delete-event`, false);
+  xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhr.send("event_id="+event_id);
+  return xhr.status;
+}
+
+function callApproveEvent(event_id) {
+  let xhr = new XMLHttpRequest();
+  xhr.open("POST", `${config.baseUrl}/approve-event`, false);
   xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xhr.send("event_id="+event_id);
   return xhr.status;
@@ -60,7 +68,7 @@ function CallSearchForAdmin(state) {
 
 function GetAllEventsAuth() {
   let xhr = new XMLHttpRequest();
-  xhr.open("POST", `${config.baseUrl}/get-all-events`, false);
+  xhr.open("POST", `${config.baseUrl}/get-events-approved`, false);
   xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xhr.send();
   console.log(xhr.responseText);
@@ -121,8 +129,9 @@ export function register(state, storage) {
 
 export function addEvent(state, curUser) {
   let eventCode = callCreateEvent(state, curUser);
+  console.log(eventCode);
   if (eventCode === 200) { // event added successfully
-    let newEvent = new Event('0', state.name, curUser, state.description, state.url, state.date, state.address);
+    let newEvent = new Event('0', state.name, curUser, state.description, state.url, state.date, state.location, "no");
     return [true, newEvent];
   } else {
       return [false, 'Error has occurred'];
@@ -131,6 +140,15 @@ export function addEvent(state, curUser) {
 
 export function deleteEvent(event_id) {
   let deleteCode = callDeleteEvent(event_id);
+  if (deleteCode === 200) {
+    return [true];
+  } else {
+      return [false, "Error has occured"];
+  }
+}
+
+export function approveEvent(event_id) {
+  let deleteCode = callApproveEvent(event_id);
   if (deleteCode === 200) {
     return [true];
   } else {
@@ -159,7 +177,7 @@ export function SearchForUser(state) {
     for (var i = 0; i < data.results.length; i++)
     {
       events.push(new Event(data.results[i].event_id, data.results[i].name, data.results[i].email, data.results[i].description,
-        data.results[i].url, data.results[i].date_time, data.results[i].address));
+        data.results[i].url, data.results[i].date_time, data.results[i].location, data.results[i].approved));
     }
     return [true, events];
   } else {
@@ -175,7 +193,7 @@ export function SearchForAdmin(state) {
     for (var i = 0; i < data.results.length; i++)
     {
       events.push(new Event(data.results[i].event_id, data.results[i].name, data.results[i].email, data.results[i].description,
-        data.results[i].url, data.results[i].date_time, data.results[i].address));
+        data.results[i].url, data.results[i].date_time, data.results[i].location, data.results[i].approved));
     }
     return [true, events];
   } else {
@@ -192,7 +210,7 @@ export function SearchAllEvents() {
     for (var i = 0; i < data.results.length; i++)
     {
       events.push(new Event(data.results[i].event_id, data.results[i].name, data.results[i].email, data.results[i].description,
-        data.results[i].url, data.results[i].date_time, data.results[i].address));
+        data.results[i].url, data.results[i].date_time, data.results[i].location, data.results[i].approved));
     }
     return [true, events];
   } else {
