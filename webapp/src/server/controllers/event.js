@@ -13,7 +13,7 @@ module.exports.createEvent = function(req, res) {
           let events = {
             "admin_id": admin_id,
             "name": req.body.name,
-            "location": "none",
+            "location": req.body.location,
             "description": req.body.description,
             "url": req.body.url,
             "date_time": req.body.date_time,

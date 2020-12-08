@@ -2,7 +2,7 @@ import React from 'react';
 import '../../webapp.css';
 import Navbar from '../../components/Navbar';
 import {Link, withRouter} from "react-router-dom";
-import {registerToEvent, deleteEvent} from "../../services/Validator";
+import {registerToEvent, deleteEvent, approveEvent} from "../../services/Validator";
 
 class Dashboard extends React.Component {
 
@@ -31,7 +31,8 @@ class Dashboard extends React.Component {
 				date_time: date.toLocaleString("en-US", { timeZone: "EST" }),
 				url: listEvents[i].url,
 				key: listEvents[i].key,
-				admin: listEvents[i].admin
+				admin: listEvents[i].admin,
+				approved: listEvents[i].approved
 			})
     }
 
@@ -101,6 +102,23 @@ class Dashboard extends React.Component {
 		}
 	}
 
+	handleApprove(key, name, approved) {
+		if (approved === "yes") {
+			alert("Event is already approved");
+			return;
+		}
+		if (window.confirm(`Are you sure you want to approve the event ${name}?`)) {
+			let approved = approveEvent(key);
+			if (approved[0]) {
+				alert("Event was successfully approved.");
+			} else {
+					alert(approved[1]);
+			}
+		} else {
+				alert("Approval of event cancelled.");
+		}
+	}
+
   renderTableData() {
 
 		const divStyle = {
@@ -118,11 +136,12 @@ class Dashboard extends React.Component {
 		}
 
 		return this.state.events.map((eventInfo, index) => {
-			const { key, name, description, location, date_time, url, admin } = eventInfo //destructuring
+			const { key, name, description, location, date_time, url, admin, approved } = eventInfo //destructuring
 			return (
 
 				<div>
 					<div class='eventsBox' id={name} key={index}>
+						<div id="approveButton" onClick={(e) => this.handleApprove(key, name, approved)}>+</div>
 						<div style={dStyle}>{name}</div>
 						<div style={dStyle}>{location}</div>
 						<div style={dStyle}>{date_time}</div>
